@@ -1,19 +1,14 @@
-import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
 
 function App() {
-  const Pension = [
-    {name : "Ade", pensionId : "24465", status : false},
-    {name : "Dayo", pensionId : "20908", status : true},
-    {name : "Bola", pensionId : "28885", status : false},
-    {name : "Akin", pensionId : "39802", status : true},
-    {name : "Zed", pensionId : "30918", status : true}
-  ];
+  const [names, setName] = useState([]);
 
-  const [name, setName] = useState("")
-  useEffect(()=>{
-    fetch('#').then(()=>Response.json()).then(()=>setName(data))
-  })
+  useEffect(() => {
+    fetch('http://18.220.15.243:8085/fetch-authentication-status')
+      .then((resp) => resp.json())
+      .then((data) => setName(data.response))
+      .catch((error) => console.error('Error:', error));
+  }, []);
 
   return (
     <>
@@ -22,22 +17,35 @@ function App() {
         <table className="table-auto border-separate border-spacing-[80px] text-center text-[35px] p-7 mx-auto">
           <thead>
             <tr>
+              <th className="border border-black p-2 rounded-md">Id</th>
               <th className="border border-black p-2 rounded-md">Name</th>
               <th className="border border-black p-2 rounded-md">Pension Id</th>
               <th className="border border-black p-2 rounded-md">Status</th>
             </tr>
           </thead>
+
           <tbody>
-            {Pension.map((pen, index) => (
+            {names.map((name, index) => (
               <tr key={index}>
-                <td className="border border-black p-2 rounded-md">{pen.name}</td>
-                <td className="border border-black p-2 rounded-md">{pen.pensionId}</td>
-                <td className={`border p-2 rounded-md text-white ${pen.status === true ? "bg-green-600" : "bg-red-600"}`}>{pen.status === true ? "Verified" : "Unverified"}</td>
+                <td className="border border-black p-2 rounded-md">{name.id}</td>
+                <td className="border border-black p-2 rounded-md">{name.name}</td>
+                <td className="border border-black p-2 rounded-md">{name.pensionID}</td>
+                <td
+                  className={`border p-2 rounded-md text-white ${
+                    name.status === true ? "bg-green-600" : "bg-red-600"
+                  }`}
+                >
+                  {name.status === true ? "Verified" : "Unverified"}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className=""></div>
+        <div className="flex justify-center items-center">
+          <button className="bg-green-500  h-20 w-[300px] text-[30px] text-white rounded-xl">
+            Check Pension Status
+          </button>
+        </div>
       </div>
     </>
   );
