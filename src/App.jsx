@@ -4,7 +4,7 @@ function App() {
   const [names, setName] = useState([]);
 
   useEffect(() => {
-    fetch('http://18.220.15.243:8085/fetch-authentication-status')
+    fetch('https://biocard.zkteco-wa.com/fetch-authentication-status')
       .then((resp) => resp.json())
       .then((data) => setName(data.response))
       .catch((error) => console.error('Error:', error));
