@@ -21,6 +21,8 @@ function App() {
               <th className="border border-black p-2 rounded-md">Name</th>
               <th className="border border-black p-2 rounded-md">Pension Id</th>
               <th className="border border-black p-2 rounded-md">Status</th>
+              <th className="border border-black p-2 rounded-md">Verification type</th>
+              <th className="border border-black p-2 rounded-md">Remark</th>
             </tr>
           </thead>
 
@@ -37,7 +39,10 @@ function App() {
                 >
                   {name.status === true ? "Verified" : "Unverified"}
                 </td>
+                <td className="border border-black p-2 rounded-md">{name.verification_type}</td>
+                <td className="border border-black p-2 rounded-md">{name.remark}</td>
               </tr>
+              
             ))}
           </tbody>
         </table>
