@@ -13,13 +13,13 @@ function App() {
   return (
     <>
       <div className="justify-center items-center bg-slate-300">
-        <h1 className="text-center font-semibold text-7xl">Pension Authentication portal</h1>
+        <h1 className="text-center font-semibold text-7xl">Authentication portal</h1>
         <table className="table-auto border-separate border-spacing-[80px] text-center text-[35px] p-7 mx-auto">
           <thead>
             <tr>
               <th className="border border-black p-2 rounded-md">Id</th>
               <th className="border border-black p-2 rounded-md">Name</th>
-              <th className="border border-black p-2 rounded-md">Pension Id</th>
+              <th className="border border-black p-2 rounded-md">Staff Id</th>
               <th className="border border-black p-2 rounded-md">Status</th>
               <th className="border border-black p-2 rounded-md">Verification type</th>
               <th className="border border-black p-2 rounded-md">Remark</th>
